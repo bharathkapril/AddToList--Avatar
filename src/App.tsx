@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import List from "./components/List";
+import AddToList from "./components/AddToList";
+
+export interface IState {
+  people: {
+    name: string;
+    age: number;
+    url: string;
+    note?: string;
+  }[];
+}
 
 function App() {
+  const [people, setPeople] = useState<IState["people"]>([
+    {
+      name: "Ang",
+      url: "https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:scenic:/international/nickelodeon.com.au/aangs-journey-season-2-576.jpg?quality=0.80",
+      age: 112,
+      note: "The Last Air Bender",
+    },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>People invited to the party</h1>
+      <List people={people} />
+      <AddToList people={people} setPeople={setPeople} />
     </div>
   );
 }
