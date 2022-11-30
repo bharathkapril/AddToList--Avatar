@@ -27,7 +27,6 @@ function App() {
       <h1>People invited to the party</h1>
       <List people={people} />
       <AddToList people={people} setPeople={setPeople} />
-      hii
     </div>
   );
 }
